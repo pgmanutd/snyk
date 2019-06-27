@@ -27,7 +27,7 @@ script:
 jobs:
   include:
     - stage: test
-      script: npx danger ci
+      script: npx danger ci --failOnErrors
       name: "Danger Zone"
     - stage: Release
       if: branch = master AND type != pull_request
