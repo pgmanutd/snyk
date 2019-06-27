@@ -19,6 +19,7 @@ notifications:
 install:
   - npm install
 script:
+  - npx danger ci
   - npm run snyk-auth
   # some tests are failing on npm@5, downgrade to npm@3 if >3 is installed
   # namely: protect-patch.test.js, wizard-prepare.test.js, wizard-prepublish.test.js
