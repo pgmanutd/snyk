@@ -19,7 +19,6 @@ notifications:
 install:
   - npm install
 script:
-  - npx danger ci
   - npm run snyk-auth
   # some tests are failing on npm@5, downgrade to npm@3 if >3 is installed
   # namely: protect-patch.test.js, wizard-prepare.test.js, wizard-prepublish.test.js
@@ -27,6 +26,9 @@ script:
   - npm test
 jobs:
   include:
+    - stage: test
+      script: npx danger ci
+      name: "Danger Zone"
     - stage: Release
       if: branch = master AND type != pull_request
       node_js: "8"
